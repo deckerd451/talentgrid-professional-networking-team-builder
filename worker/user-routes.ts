@@ -23,7 +23,7 @@ const mapRowToProfile = (row: ProfileRow): Profile => {
         createdAt: new Date(row.created_at).getTime(),
     };
 };
-export function userRoutes(app: Hono<{ Bindings: Env & { SUPABASE_URL: string; SUPABASE_ANON_KEY: string; } }>) {
+export function userRoutes(app: Hono<{ Bindings: Env }>) {
   // PROFILE ROUTES
   app.post('/api/profiles', async (c) => {
     const supabase = getSupabase(c);
@@ -43,7 +43,7 @@ export function userRoutes(app: Hono<{ Bindings: Env & { SUPABASE_URL: string; S
     };
     const { data, error } = await supabase
       .from('profiles')
-      .insert(newProfileData)
+      .insert(newProfileData as any)
       .select()
       .single();
     if (error) {

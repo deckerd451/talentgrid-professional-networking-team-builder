@@ -3,22 +3,25 @@ export interface ApiResponse<T = unknown> {
   data?: T;
   error?: string;
 }
-
-// Minimal real-world chat example types (shared by frontend and worker)
-export interface User {
-  id: string;
+export interface Skill {
   name: string;
+  proficiency: number; // 1-5 scale
 }
-
-export interface Chat {
+export interface Profile {
   id: string;
-  title: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  photoUrl: string;
+  bio?: string;
+  availability: 'Available' | 'Busy' | 'Not Looking';
+  skills: Skill[];
+  createdAt: number; // epoch millis
 }
-
-export interface ChatMessage {
+export type LeaderboardUser = {
   id: string;
-  chatId: string;
-  userId: string;
-  text: string;
-  ts: number; // epoch millis
-}
+  firstName: string;
+  lastName:string;
+  photoUrl: string;
+  value: number | string;
+};

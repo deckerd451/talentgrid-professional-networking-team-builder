@@ -35,14 +35,14 @@ export function userRoutes(app: Hono<{ Bindings: Env }>) {
     const { items: allProfiles } = await ProfileEntity.list(c.env, null, 1000); // Limiting to 1000 for performance
     let filteredProfiles = allProfiles;
     if (nameQuery) {
-      filteredProfiles = filteredProfiles.filter(p => 
-        p.firstName.toLowerCase().includes(nameQuery) || 
+      filteredProfiles = filteredProfiles.filter(p =>
+        p.firstName.toLowerCase().includes(nameQuery) ||
         p.lastName.toLowerCase().includes(nameQuery)
       );
     }
     if (skillsQuery && skillsQuery.length > 0) {
-      filteredProfiles = filteredProfiles.filter(p => 
-        skillsQuery.every(requiredSkill => 
+      filteredProfiles = filteredProfiles.filter(p =>
+        skillsQuery.every(requiredSkill =>
           p.skills.some(profileSkill => profileSkill.name.toLowerCase() === requiredSkill)
         )
       );
@@ -88,7 +88,7 @@ export function userRoutes(app: Hono<{ Bindings: Env }>) {
       const sorted = allProfiles
         .sort((a, b) => b.createdAt - a.createdAt)
         .slice(0, 10);
-      return ok(c, sorted.map(p => ({ id: p.id, firstName: p.firstName, lastName: p.lastName, photoUrl: p.photoUrl, value: new Date(p.createdAt).toLocaleDateString() })));
+      return ok(c, sorted.map(p => ({ id: p.id, firstName: p.firstName, lastName: p.lastName, photoUrl: p.photoUrl, value: new Date(p.createdAt).toLocaleDateString(), createdAt: p.createdAt })));
     }
     // Default: Top skills (most common skills)
     const skillCounts: Record<string, number> = {};

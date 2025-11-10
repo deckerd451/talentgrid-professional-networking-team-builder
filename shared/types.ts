@@ -21,7 +21,8 @@ export interface Profile {
 export type LeaderboardUser = {
   id: string;
   firstName: string;
-  lastName:string;
+  lastName: string;
   photoUrl: string;
   value: number | string;
+  createdAt?: number;
 };

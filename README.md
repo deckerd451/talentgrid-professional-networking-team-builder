@@ -1,6 +1,6 @@
 # TalentGrid: Professional Networking & Team Builder
 
-[cloudflarebutton]
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/deckerd451/talentgrid-professional-networking-team-builder)
 
 A minimalist, single-page application for tech professionals to create profiles, discover collaborators, and build teams, set against a stunning animated background.
 
@@ -90,7 +90,7 @@ This command will build the React application and deploy it along with the Hono 
 
 Alternatively, you can deploy directly from your GitHub repository using the button below.
 
-[cloudflarebutton]
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/deckerd451/talentgrid-professional-networking-team-builder)
 
 ## 🏗️ Architecture
 
